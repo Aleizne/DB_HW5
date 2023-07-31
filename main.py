@@ -61,18 +61,18 @@ def update_client(client_id: int,
                 cur.execute("""
                 UPDATE Client
                 SET first_name = %s
-                WHERE id = %s;""", (first_name, client_id))
+                WHERE id = %s;""", (first_name, client_id, ))
             if last_name is not None:
                 cur.execute("""
                 UPDATE Client    
-                last_name = %s
-                WHERE id = %s;""", (last_name, client_id))
+                SET last_name = %s
+                WHERE id = %s;""", (last_name, client_id,))
             if email is not None:
                 cur.execute("""
                 UPDATE Client
-                email = %s
+                SET email = %s
                 WHERE id = %s;
-                """, (email, client_id))
+                """, (email, client_id, ))
             cur.execute("""
                 SELECT * FROM Client
                 WHERE id = %s;
